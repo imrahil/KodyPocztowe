@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<application xmlns="http://ns.adobe.com/air/application/3.1">
+    <id>com.ania.apps.kodypocztowe</id>
+    <filename>KodyPocztowe</filename>
+    <name>Kody Pocztowe</name>
+    <versionNumber>0.0.1</versionNumber>
+    <copyright>Copyright © 2012 Anna Dabrowska</copyright>
+
+    <initialWindow>
+        <content>KodyPocztowe.swf</content>
+        <autoOrients>false</autoOrients>
+        <fullScreen>false</fullScreen>
+        <visible>true</visible>
+    </initialWindow>
+</application>

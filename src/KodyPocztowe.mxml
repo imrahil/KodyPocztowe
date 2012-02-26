@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:ViewNavigatorApplication xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark">
-    <s:navigationContent>
-        <s:Button label="Home" click="navigator.popToFirstView()"/>
-    </s:navigationContent>
-</s:ViewNavigatorApplication>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:kodypocztowe="com.ania.apps.kodypocztowe.*" xmlns:view="com.ania.apps.kodypocztowe.view.*">
+
+    <fx:Declarations>
+        <kodypocztowe:KodyPocztoweContext contextView="{this}" />
+    </fx:Declarations>
+
+    <view:SearchForm />
+
+</s:WindowedApplication>
