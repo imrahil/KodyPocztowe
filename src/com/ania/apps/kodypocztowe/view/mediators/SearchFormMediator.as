@@ -7,6 +7,7 @@
  */
 package com.ania.apps.kodypocztowe.view.mediators
 {
+    import com.ania.apps.kodypocztowe.model.vo.KodData;
     import com.ania.apps.kodypocztowe.signals.ShowAddressSignal;
     import com.ania.apps.kodypocztowe.signals.signaltons.AddressesUpdatedSignal;
     import com.ania.apps.kodypocztowe.utils.LogUtil;
@@ -62,14 +63,25 @@ package com.ania.apps.kodypocztowe.view.mediators
             view.testSignal.add(onTestSignal);
         }
 
+        private var diff:Number;
+
         private function onAddressesUpdated(addresses:ArrayCollection):void
         {
+            var finish:Number = new Date().getTime();
+            finish -= diff;
 
+            for each (var kod:KodData in addresses)
+            {
+                view.outputTxt.text += "\nKod: " + kod.kod + " - nazwa: " + kod.nazwa;
+            }
+
+            view.outputTxt.text += "\n\nFinish: " + finish;
         }
 
-        private function onTestSignal():void
+        private function onTestSignal(zipCode:String):void
         {
-            showAddressSignal.dispatch("87-100");
+            diff = new Date().getTime();
+            showAddressSignal.dispatch(zipCode);
         }
     }
 }
