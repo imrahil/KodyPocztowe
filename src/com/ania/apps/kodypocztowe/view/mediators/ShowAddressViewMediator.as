@@ -11,7 +11,7 @@ package com.ania.apps.kodypocztowe.view.mediators
     import com.ania.apps.kodypocztowe.signals.ShowAddressSignal;
     import com.ania.apps.kodypocztowe.signals.signaltons.AddressesUpdatedSignal;
     import com.ania.apps.kodypocztowe.utils.LogUtil;
-    import com.ania.apps.kodypocztowe.view.SearchForm;
+    import com.ania.apps.kodypocztowe.view.ShowAddressView;
 
     import mx.collections.ArrayCollection;
 
@@ -19,13 +19,13 @@ package com.ania.apps.kodypocztowe.view.mediators
 
     import org.robotlegs.mvcs.Mediator;
 
-    public class SearchFormMediator extends Mediator
+    public class ShowAddressViewMediator extends Mediator
     {
         /**
          * VIEW
          */
         [Inject]
-        public var view:SearchForm;
+        public var view:ShowAddressView;
 
         /**
          * SIGNAL -> COMMAND
@@ -42,7 +42,7 @@ package com.ania.apps.kodypocztowe.view.mediators
         /** 
          * CONSTRUCTOR 
          */
-        public function SearchFormMediator()
+        public function ShowAddressViewMediator()
         {
             super();
             
@@ -60,7 +60,7 @@ package com.ania.apps.kodypocztowe.view.mediators
 
             addressesUpdatedSignal.add(onAddressesUpdated);
             
-            view.testSignal.add(onTestSignal);
+            view.searchSignal.add(onTestSignal);
         }
 
         private var diff:Number;
@@ -69,6 +69,8 @@ package com.ania.apps.kodypocztowe.view.mediators
         {
             var finish:Number = new Date().getTime();
             finish -= diff;
+
+            view.outputTxt.text = "";
 
             for each (var kod:KodData in addresses)
             {

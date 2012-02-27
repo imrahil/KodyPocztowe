@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:s="library://ns.adobe.com/flex/spark">
+
+    <fx:Script>
+        <![CDATA[
+        import org.osflash.signals.Signal;
+
+        public var searchZipCodeViewSignal:Signal = new Signal();
+        public var showAddresViewSignal:Signal = new Signal();
+        ]]>
+    </fx:Script>
+    <s:layout>
+        <s:VerticalLayout horizontalAlign="center" verticalAlign="middle" />
+    </s:layout>
+
+    <s:Button label="Szukaj kodu" width="50%" fontSize="26" click="searchZipCodeViewSignal.dispatch()" />
+    <s:Label text="Znajdź kod pocztowy, jeśli znasz ulicę i miejscowość" />
+
+    <s:Spacer height="30" />
+
+    <s:Button label="Znajdź szczegółowy adres" width="50%" fontSize="26" click="showAddresViewSignal.dispatch()" />
+    <s:Label text="Pokaż szczegółowe dane dla wybranego kodu pocztowego" />
+</s:View>
