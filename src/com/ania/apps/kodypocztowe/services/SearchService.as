@@ -7,7 +7,14 @@
  */
 package com.ania.apps.kodypocztowe.services
 {
+    import com.ania.apps.kodypocztowe.model.KodyPocztoweModel;
+    import com.ania.apps.kodypocztowe.model.vo.KodData;
+    import com.ania.apps.kodypocztowe.services.helpers.ISQLRunnerDelegate;
     import com.ania.apps.kodypocztowe.utils.LogUtil;
+
+    import flash.data.SQLResult;
+
+    import mx.collections.ArrayCollection;
 
     import mx.logging.ILogger;
 
@@ -15,7 +22,17 @@ package com.ania.apps.kodypocztowe.services
 
     public class SearchService extends Actor implements ISearchService
     {
+        [Inject]
+        public var sqlRunner:ISQLRunnerDelegate;
+
+        [Inject]
+        public var kodyPocztoweModel:KodyPocztoweModel;
+
         private var logger:ILogger;
+
+        [Embed(source="/assets/sql/ShowAddress.sql", mimeType="application/octet-stream")]
+        private static const ShowAddressStatementText:Class;
+        public static const SHOW_ADDRESS_SQL:String = new ShowAddressStatementText();
 
         public function SearchService()
         {
@@ -32,6 +49,12 @@ package com.ania.apps.kodypocztowe.services
 
         public function showAddress(zipCode:String):void
         {
+            sqlRunner.execute(SHOW_ADDRESS_SQL, {zipCode:zipCode}, loadShowAddressResultHandler, KodData);
+        }
+
+        private function loadShowAddressResultHandler(result:SQLResult):void
+        {
+            kodyPocztoweModel.addresses = new ArrayCollection(result.data);
         }
     }
 }

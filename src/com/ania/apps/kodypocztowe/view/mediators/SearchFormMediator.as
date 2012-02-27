@@ -7,8 +7,12 @@
  */
 package com.ania.apps.kodypocztowe.view.mediators
 {
+    import com.ania.apps.kodypocztowe.signals.ShowAddressSignal;
+    import com.ania.apps.kodypocztowe.signals.signaltons.AddressesUpdatedSignal;
     import com.ania.apps.kodypocztowe.utils.LogUtil;
     import com.ania.apps.kodypocztowe.view.SearchForm;
+
+    import mx.collections.ArrayCollection;
 
     import mx.logging.ILogger;
 
@@ -23,13 +27,13 @@ package com.ania.apps.kodypocztowe.view.mediators
         public var view:SearchForm;
 
         /**
-         * SIGNALTONS
-         */
-
-
-        /**
          * SIGNAL -> COMMAND
          */
+        [Inject]
+        public var showAddressSignal:ShowAddressSignal;
+
+        [Inject]
+        public var addressesUpdatedSignal:AddressesUpdatedSignal;
 
         /** variables **/
         private var logger:ILogger;
@@ -52,12 +56,20 @@ package com.ania.apps.kodypocztowe.view.mediators
         override public function onRegister():void
         {
             logger.debug(": onRegister");
+
+            addressesUpdatedSignal.add(onAddressesUpdated);
             
+            view.testSignal.add(onTestSignal);
         }
 
-        /** methods **/
+        private function onAddressesUpdated(addresses:ArrayCollection):void
+        {
 
-        /** eventHandlers **/
+        }
 
+        private function onTestSignal():void
+        {
+            showAddressSignal.dispatch("87-100");
+        }
     }
 }

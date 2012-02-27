@@ -15,6 +15,7 @@ package com.ania.apps.kodypocztowe
     import com.ania.apps.kodypocztowe.signals.ConfigureDatabaseSignal;
     import com.ania.apps.kodypocztowe.signals.SearchZipCodeSignal;
     import com.ania.apps.kodypocztowe.signals.ShowAddressSignal;
+    import com.ania.apps.kodypocztowe.signals.signaltons.AddressesUpdatedSignal;
     import com.ania.apps.kodypocztowe.view.SearchForm;
     import com.ania.apps.kodypocztowe.view.mediators.SearchFormMediator;
 
@@ -40,6 +41,8 @@ package com.ania.apps.kodypocztowe
             signalCommandMap.mapSignalClass(ConfigureDatabaseSignal, ConfigureDatabaseCommand, true);
             signalCommandMap.mapSignalClass(SearchZipCodeSignal, SearchZipCodeCommand);
             signalCommandMap.mapSignalClass(ShowAddressSignal, ShowAddressCommand);
+
+            injector.mapSingleton(AddressesUpdatedSignal);
 
             // Add Model
             injector.mapSingleton(KodyPocztoweModel);

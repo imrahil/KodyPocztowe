@@ -5,15 +5,17 @@
  @project  KodyPocztowe
  @internal
  */
-package com.ania.apps.kodypocztowe.signals
+package com.ania.apps.kodypocztowe.signals.signaltons
 {
+    import mx.collections.ArrayCollection;
+
     import org.osflash.signals.Signal;
 
-    public class ShowAddressSignal extends Signal
+    public class AddressesUpdatedSignal extends Signal
     {
-        public function ShowAddressSignal()
+        public function AddressesUpdatedSignal()
         {
-            super(String);
+            super(ArrayCollection);
         }
     }
 }
