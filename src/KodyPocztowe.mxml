@@ -4,6 +4,8 @@
                             title="Wyszukiwarka kodów pocztowych"
                             firstView="com.ania.apps.kodypocztowe.view.MainView">
 
+    <fx:Style source="/assets/css/styles.css"/>
+
     <fx:Declarations>
         <kodypocztowe:KodyPocztoweContext contextView="{this}" />
     </fx:Declarations>

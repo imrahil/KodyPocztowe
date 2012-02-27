@@ -4,15 +4,34 @@
 
     <fx:Script>
         <![CDATA[
+        import com.ania.apps.kodypocztowe.view.components.SkinnableAlert;
+
         import org.osflash.signals.Signal;
 
         public var searchZipCodeViewSignal:Signal = new Signal();
         public var showAddresViewSignal:Signal = new Signal();
+
+        private function o_programie_clickHandler():void
+        {
+            var app_xml:XML = NativeApplication.nativeApplication.applicationDescriptor;
+            var ns:Namespace = app_xml.namespace();
+            var versionNumber:String = app_xml.ns::versionNumber;
+
+            var aboutTxt:String = "<p align='center'>Wyszukiwarka kodów pocztowych<br /><br />" +
+                                  "<b>Autor:</b> Anna Dabrowska<br />" +
+            				      "<b>Email:</b> ania.blackberry@gmail.com</p>";
+            SkinnableAlert.show(aboutTxt, "Kody Pocztowe - v " + versionNumber, SkinnableAlert.OK);
+        }
         ]]>
     </fx:Script>
+
     <s:layout>
         <s:VerticalLayout horizontalAlign="center" verticalAlign="middle" />
     </s:layout>
+
+    <s:actionContent>
+        <s:Button label="O programie" click="o_programie_clickHandler()" />
+    </s:actionContent>
 
     <s:Button label="Szukaj kodu" width="50%" fontSize="26" click="searchZipCodeViewSignal.dispatch()" />
     <s:Label text="Znajdź kod pocztowy, jeśli znasz ulicę i miejscowość" />

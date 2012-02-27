@@ -1,0 +1,16 @@
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace controls "com.ania.apps.kodypocztowe.view.components.*";
+
+controls|SkinnableAlert {
+    skinClass: ClassReference("com.ania.apps.kodypocztowe.view.components.SkinnableAlertSkin");
+    backgroundColor: #424242;
+    backgroundAlpha: 0.9;
+}
+
+controls|SkinnableAlert s|TextArea {
+    contentBackgroundAlpha: 0;
+}
+
+controls|SkinnableAlert s|Button {
+    fontSize: 28;
+}
