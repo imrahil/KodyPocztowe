@@ -4,3 +4,10 @@ Baza kodów pochodzi ze strony - http://piotr.eldora.pl/bazy-danych-kody-pocztow
 Ikonka - http://findicons.com/icon/51327/e_mail
 
 Kod w dużej mierze bazuje na aplikacji PersonalKanban - (c) Joel Hooks
+
+Wersje:
+0.0.2 - wersja z wyszukiwarka danych szczegolowych dla podanego kodu pocztowego
+0.0.1 - szkielet
+
+TODO:
+- dodac otwieranie miejscowosci/ulicy w Google Maps

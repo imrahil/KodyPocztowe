@@ -11,7 +11,7 @@
         public var searchZipCodeViewSignal:Signal = new Signal();
         public var showAddresViewSignal:Signal = new Signal();
 
-        private function o_programie_clickHandler():void
+        private static function o_programie_clickHandler():void
         {
             var app_xml:XML = NativeApplication.nativeApplication.applicationDescriptor;
             var ns:Namespace = app_xml.namespace();

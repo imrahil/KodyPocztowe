@@ -8,7 +8,7 @@
 package com.ania.apps.kodypocztowe.services
 {
     import com.ania.apps.kodypocztowe.model.KodyPocztoweModel;
-    import com.ania.apps.kodypocztowe.model.vo.KodData;
+    import com.ania.apps.kodypocztowe.model.vo.ZipCodeVO;
     import com.ania.apps.kodypocztowe.services.helpers.ISQLRunnerDelegate;
     import com.ania.apps.kodypocztowe.utils.LogUtil;
 
@@ -49,7 +49,7 @@ package com.ania.apps.kodypocztowe.services
 
         public function showAddress(zipCode:String):void
         {
-            sqlRunner.execute(SHOW_ADDRESS_SQL, {zipCode:zipCode}, loadShowAddressResultHandler, KodData);
+            sqlRunner.execute(SHOW_ADDRESS_SQL, {zipCode:zipCode}, loadShowAddressResultHandler, ZipCodeVO);
         }
 
         private function loadShowAddressResultHandler(result:SQLResult):void

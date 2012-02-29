@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<s:IconItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+                    styleName="myItemRendererStyle"
+                    labelFunction="outputLabelFunction"
+                    messageFunction="outputMessageFunction">
+    <fx:Script>
+        <![CDATA[
+        import com.ania.apps.kodypocztowe.model.vo.ZipCodeVO;
+
+        private static function outputLabelFunction(item:Object):String
+        {
+            var zipCode:ZipCodeVO = item as ZipCodeVO;
+
+            var output:String = "Kod: " + zipCode.kod + " - miejscowość: " + zipCode.miej;
+            if (zipCode.adres != "")
+            {
+                output += ", ulica: " + zipCode.adres;
+            }
+            output += "\nzakres: " + zipCode.zakres;
+
+            return output;
+        }
+
+        private static function outputMessageFunction(item:Object):String
+        {
+            var zipCode:ZipCodeVO = item as ZipCodeVO;
+
+            return "województwo: " + zipCode.woj + ", powiat: " + zipCode.powiat + ", gmina: " + zipCode.gmina;
+        }
+        ]]>
+    </fx:Script>
+</s:IconItemRenderer>

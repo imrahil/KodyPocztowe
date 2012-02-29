@@ -14,3 +14,17 @@ controls|SkinnableAlert s|TextArea {
 controls|SkinnableAlert s|Button {
     fontSize: 28;
 }
+
+.myItemRendererStyle {
+    fontSize: 24;
+    paddingTop: 15;
+    paddingBottom: 15;
+    verticalAlign: top;
+    verticalGap: 18;
+    messageStyleName: myItemRendererMessageStyle;
+}
+
+.myItemRendererMessageStyle {
+    fontSize: 23;
+    color: #666666;
+}

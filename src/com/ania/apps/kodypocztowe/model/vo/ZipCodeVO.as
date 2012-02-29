@@ -1,12 +1,8 @@
 package com.ania.apps.kodypocztowe.model.vo
 {
     [Bindable]
-    public class KodData
+    public class ZipCodeVO
     {
-        public function KodData()
-        {
-        }
-
         public var id:int;
         public var kod:String;
         public var nazwa:String;
@@ -16,6 +12,5 @@ package com.ania.apps.kodypocztowe.model.vo
         public var powiat:String;
         public var zakres:String;
         public var gmina:String;
-
     }
 }

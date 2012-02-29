@@ -7,14 +7,12 @@
  */
 package com.ania.apps.kodypocztowe.view.mediators
 {
-    import com.ania.apps.kodypocztowe.model.vo.KodData;
     import com.ania.apps.kodypocztowe.signals.ShowAddressSignal;
     import com.ania.apps.kodypocztowe.signals.signaltons.AddressesUpdatedSignal;
     import com.ania.apps.kodypocztowe.utils.LogUtil;
     import com.ania.apps.kodypocztowe.view.ShowAddressView;
 
     import mx.collections.ArrayCollection;
-
     import mx.logging.ILogger;
 
     import org.robotlegs.mvcs.Mediator;
@@ -60,29 +58,21 @@ package com.ania.apps.kodypocztowe.view.mediators
 
             addressesUpdatedSignal.add(onAddressesUpdated);
             
-            view.searchSignal.add(onTestSignal);
+            view.searchSignal.add(onSearchSignal);
         }
-
-        private var diff:Number;
 
         private function onAddressesUpdated(addresses:ArrayCollection):void
         {
-            var finish:Number = new Date().getTime();
-            finish -= diff;
-
-            view.outputTxt.text = "";
-
-            for each (var kod:KodData in addresses)
-            {
-                view.outputTxt.text += "\nKod: " + kod.kod + " - nazwa: " + kod.nazwa;
-            }
-
-            view.outputTxt.text += "\n\nFinish: " + finish;
+            view.outputList.dataProvider = addresses;
         }
 
-        private function onTestSignal(zipCode:String):void
+        private function onSearchSignal(zipCode:String):void
         {
-            diff = new Date().getTime();
+            if (zipCode.indexOf("-") == -1)
+            {
+                zipCode = zipCode.substr(0, 2) + "-" + zipCode.substr(2, 3);
+            }
+
             showAddressSignal.dispatch(zipCode);
         }
     }
