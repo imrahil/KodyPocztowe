@@ -7,13 +7,15 @@
  */
 package com.ania.apps.kodypocztowe.signals
 {
+    import com.ania.apps.kodypocztowe.model.vo.SearchAreaVO;
+
     import org.osflash.signals.Signal;
 
     public class SearchZipCodeSignal extends Signal
     {
         public function SearchZipCodeSignal()
         {
-            super();
+            super(SearchAreaVO);
         }
     }
 }

@@ -8,6 +8,7 @@
 package com.ania.apps.kodypocztowe.view.mediators
 {
     import com.ania.apps.kodypocztowe.utils.LogUtil;
+    import com.ania.apps.kodypocztowe.view.FindZipCodeView;
     import com.ania.apps.kodypocztowe.view.ShowAddressView;
 
     import mx.logging.ILogger;
@@ -22,15 +23,6 @@ package com.ania.apps.kodypocztowe.view.mediators
          */
         [Inject]
         public var view:MainView;
-
-        /**
-         * SIGNALTONS
-         */
-
-
-        /**
-         * SIGNAL -> COMMAND
-         */
 
         /** variables **/
         private var logger:ILogger;
@@ -60,17 +52,12 @@ package com.ania.apps.kodypocztowe.view.mediators
 
         private function onSearchZipCodeSignal():void
         {
-
+            view.navigator.pushView(FindZipCodeView);
         }
 
         private function onShowAddressSignal():void
         {
             view.navigator.pushView(ShowAddressView);
         }
-
-        /** methods **/
-
-        /** eventHandlers **/
-
     }
 }

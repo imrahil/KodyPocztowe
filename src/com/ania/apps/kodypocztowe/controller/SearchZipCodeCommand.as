@@ -7,6 +7,7 @@
  */
 package com.ania.apps.kodypocztowe.controller 
 {
+    import com.ania.apps.kodypocztowe.model.vo.SearchAreaVO;
     import com.ania.apps.kodypocztowe.services.ISearchService;
 
     import org.robotlegs.mvcs.SignalCommand;
@@ -14,6 +15,8 @@ package com.ania.apps.kodypocztowe.controller
     public final class SearchZipCodeCommand extends SignalCommand 
     {
         /** PARAMETERS **/
+        [Inject]
+        public var searchAreaVO:SearchAreaVO;
 
         /** INJECTIONS **/
         [Inject]
@@ -24,7 +27,7 @@ package com.ania.apps.kodypocztowe.controller
          */        
         override public function execute():void    
         {
-            searchService.searchZipCode();
+            searchService.searchZipCode(searchAreaVO);
         }
     }
 }

@@ -37,6 +37,7 @@ package com.ania.apps.kodypocztowe
             signalCommandMap.mapSignalClass(SearchZipCodeSignal, SearchZipCodeCommand);
             signalCommandMap.mapSignalClass(ShowAddressSignal, ShowAddressCommand);
 
+            // Singletons
             injector.mapSingleton(AddressesUpdatedSignal);
 
             // Add Model
@@ -47,8 +48,8 @@ package com.ania.apps.kodypocztowe
 
             // Add View
             mediatorMap.mapView(MainView, MainViewMediator);
+            mediatorMap.mapView(FindZipCodeView, FindZipCodeMediator);
             mediatorMap.mapView(ShowAddressView, ShowAddressViewMediator);
-
 
             // Startup
             var signal:Signal = this.injector.getInstance(ConfigureDatabaseSignal);

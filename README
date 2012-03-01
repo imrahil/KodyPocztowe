@@ -6,6 +6,7 @@ Ikonka - http://findicons.com/icon/51327/e_mail
 Kod w dużej mierze bazuje na aplikacji PersonalKanban - (c) Joel Hooks
 
 Wersje:
+0.0.3 - wersja z wyszukiwanie kodów na bazie podanego adresu (miejscowość, ulica)
 0.0.2 - wersja z wyszukiwarka danych szczegolowych dla podanego kodu pocztowego
 0.0.1 - szkielet
 

@@ -7,29 +7,31 @@
  */
 package com.ania.apps.kodypocztowe.view.mediators
 {
-    import com.ania.apps.kodypocztowe.signals.ShowAddressSignal;
+    import com.ania.apps.kodypocztowe.model.vo.SearchAreaVO;
+    import com.ania.apps.kodypocztowe.signals.SearchZipCodeSignal;
     import com.ania.apps.kodypocztowe.signals.signaltons.AddressesUpdatedSignal;
     import com.ania.apps.kodypocztowe.utils.LogUtil;
-    import com.ania.apps.kodypocztowe.view.ShowAddressView;
 
     import mx.collections.ArrayCollection;
-    import mx.logging.ILogger;
 
+    import mx.logging.ILogger;
+    
+    import com.ania.apps.kodypocztowe.view.FindZipCodeView;
     import org.robotlegs.mvcs.Mediator;
 
-    public class ShowAddressViewMediator extends Mediator
+    public class FindZipCodeMediator extends Mediator
     {
         /**
          * VIEW
          */
         [Inject]
-        public var view:ShowAddressView;
+        public var view:FindZipCodeView;
 
         /**
          * SIGNAL -> COMMAND
          */
         [Inject]
-        public var showAddressSignal:ShowAddressSignal;
+        public var searchZipCodeSignal:SearchZipCodeSignal;
 
         /**
          * SIGNALTONS
@@ -43,7 +45,7 @@ package com.ania.apps.kodypocztowe.view.mediators
         /** 
          * CONSTRUCTOR 
          */
-        public function ShowAddressViewMediator()
+        public function FindZipCodeMediator()
         {
             super();
             
@@ -58,9 +60,9 @@ package com.ania.apps.kodypocztowe.view.mediators
         override public function onRegister():void
         {
             logger.debug(": onRegister");
-
-            addressesUpdatedSignal.add(onAddressesUpdated);
             
+            addressesUpdatedSignal.add(onAddressesUpdated);
+
             view.searchSignal.add(onSearchSignal);
         }
 
@@ -71,14 +73,19 @@ package com.ania.apps.kodypocztowe.view.mediators
             view.resultLength.text = "Znaleziono: " + addresses.length + " wyników";
         }
 
-        private function onSearchSignal(zipCode:String):void
+        private function onSearchSignal():void
         {
-            if (zipCode.indexOf("-") == -1)
+            if (view.cityTxt.text != "" || view.streetTxt.text != "")
             {
-                zipCode = zipCode.substr(0, 2) + "-" + zipCode.substr(2, 3);
-            }
+                if (!(view.cityTxt.text.length <= 2 && view.streetTxt.text.length <= 2))
+                {
+                    var searchArea:SearchAreaVO = new SearchAreaVO();
+                    searchArea.city = view.cityTxt.text;
+                    searchArea.street = view.streetTxt.text;
 
-            showAddressSignal.dispatch(zipCode);
+                    searchZipCodeSignal.dispatch(searchArea);
+                }
+            }
         }
     }
 }

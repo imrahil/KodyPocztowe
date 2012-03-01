@@ -7,9 +7,11 @@
  */
 package com.ania.apps.kodypocztowe.services
 {
+    import com.ania.apps.kodypocztowe.model.vo.SearchAreaVO;
+
     public interface ISearchService
     {
-        function searchZipCode():void;
+        function searchZipCode(searchAreaVO:SearchAreaVO):void;
         function showAddress(zipCode:String):void;
     }
 }
