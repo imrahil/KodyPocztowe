@@ -1,6 +1,31 @@
 @namespace s "library://ns.adobe.com/flex/spark";
 @namespace controls "com.ania.apps.kodypocztowe.view.components.*";
 
+global
+{
+	chrome-color: #294867;
+	color: #CEE7F4;
+	content-background-color: #39628C;
+	symbol-color: #000000;
+	roll-over-color: #355D89;
+	selection-color: #294867;
+	focus-color: #333300;
+	accent-color: #6589AD;
+}
+
+s|Label {
+    color: #000000;
+}
+
+s|ActionBar {
+    chromeColor: #294867;
+}
+
+s|TextInput {
+    color: #FFFFFF;
+    focusColor: #FFFFFF;
+}
+
 controls|SkinnableAlert {
     skinClass: ClassReference("com.ania.apps.kodypocztowe.view.components.SkinnableAlertSkin");
     backgroundColor: #424242;
@@ -16,6 +41,7 @@ controls|SkinnableAlert s|Button {
 }
 
 .myItemRendererStyle {
+    color: #000000;
     fontSize: 24;
     paddingTop: 15;
     paddingBottom: 15;
