@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+        xmlns:components="com.ania.apps.kodypocztowe.view.components.*"
+        viewActivate="viewActivateHandler(event)">
+
+    <s:layout>
+        <s:VerticalLayout/>
+    </s:layout>
+
+    <fx:Script>
+        <![CDATA[
+        import spark.events.ViewNavigatorEvent;
+
+        private var mapURL:String;
+
+        override public function set data(value:Object):void
+        {
+            super.data = value;
+
+            mapURL = value as String;
+        }
+
+        private function viewActivateHandler(event:ViewNavigatorEvent):void
+        {
+            stageWebViewContainer.load(mapURL);
+        }
+        ]]>
+    </fx:Script>
+
+    <s:navigationContent>
+        <s:Button label="Wróć" click="navigator.popView()"/>
+    </s:navigationContent>
+
+    <components:WebView id="stageWebViewContainer" width="100%" height="100%"/>
+</s:View>

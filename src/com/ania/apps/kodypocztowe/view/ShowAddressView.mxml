@@ -8,7 +8,11 @@
 
     <fx:Script>
         <![CDATA[
+        import com.ania.apps.kodypocztowe.model.vo.ZipCodeVO;
+
         import org.osflash.signals.Signal;
+
+        import spark.events.IndexChangeEvent;
 
         public var searchSignal:Signal = new Signal();
 
@@ -23,6 +27,21 @@
         private function searchZipCode():void
         {
             searchSignal.dispatch(zipCodeTxt.text);
+        }
+
+        private function outputListChangeHandler(event:IndexChangeEvent):void
+        {
+            var selected:ZipCodeVO = outputList.selectedItem as ZipCodeVO;
+            var address:String;
+            if (selected.adres != "")
+            {
+                address = selected.adres + ", ";
+            }
+            address += selected.miej + ", Polska";
+            var url:String = "http://maps.googleapis.com/maps/api/staticmap?center=" + address + "&zoom=14&size=1024x600&scale=2&markers=color:blue|" + address + "&sensor=false";
+//            navigateToURL(new URLRequest("http://maps.google.com?q=" + address));
+//            navigator.pushView(BrowserView, "http://maps.google.com?q=" + address);
+            navigator.pushView(BrowserView, url);
         }
         ]]>
     </fx:Script>
@@ -39,7 +58,7 @@
     </s:HGroup>
 
     <s:List id="outputList" width="100%" height="100%" contentBackgroundColor="#FFFFFF"
-            itemRenderer="com.ania.apps.kodypocztowe.view.components.MyIconItemRenderer" />
+            itemRenderer="com.ania.apps.kodypocztowe.view.components.MyIconItemRenderer" change="outputListChangeHandler(event)"/>
 
     <s:Label id="resultLength" />
 </s:View>

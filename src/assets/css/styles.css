@@ -42,6 +42,7 @@ controls|SkinnableAlert s|Button {
 
 .myItemRendererStyle {
     color: #000000;
+    selectionColor: #FFFFFF;
     fontSize: 24;
     paddingTop: 15;
     paddingBottom: 15;
